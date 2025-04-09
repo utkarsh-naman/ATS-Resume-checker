@@ -47,15 +47,15 @@
         <form method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="resume" class="form-label">Upload Resume (PDF)</label>
-                <input type="file" class="form-control" name="resume" required>
+                <input type="file" id="resume" class="form-control" name="resume" required>
             </div>
             <div class="mb-3">
                 <label for="job_description" class="form-label">Paste Job Description</label>
-                <textarea class="form-control" name="job_description" rows="5"></textarea>
+                <textarea id="job_description" class="form-control" name="job_description" rows="5"></textarea>
             </div>
             <div class="mb-3">
                 <label for="jd_file" class="form-label">Or Upload Job Description (.txt)</label>
-                <input type="file" class="form-control" name="jd_file">
+                <input type="file" id="jd_file" class="form-control" name="jd_file">
             </div>
             <button type="submit" class="btn btn-primary w-100">Analyze Resume</button>
         </form>
