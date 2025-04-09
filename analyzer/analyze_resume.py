@@ -64,11 +64,21 @@ def analyze_resume(resume_path, job_description_text):
     section_score = sum(sections.values()) * 3  # 6 sections * 3 = 18 max
 
     total_score = keyword_score + grammar_score_scaled + section_score
+    # Count words in resume
+    word_count = len(resume_text.split())
+    
+    # Set minimum requirement
+    min_word_count = 240
+    word_penalty = 10 if word_count < min_word_count else 0
+    total_score = min(100, total_score - word_penalty)
+
 
     return {
         "score": min(total_score, 100),
         "matched_keywords": list(matched),
         "missing_keywords": list(missing),
         "grammar_errors": total_errors,
-        "sections_present": sections
+        "sections_present": sections,
+        "word_count": word_count,
+        "word_count_warning": word_count < min_word_count
     }
