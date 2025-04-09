@@ -1,2 +1,5 @@
+[phases.setup]
+nixPkgs = ["python311", "pip", "jdk"]  # <-- added jdk here
+
 [start]
 cmd = "python -u app.py"
