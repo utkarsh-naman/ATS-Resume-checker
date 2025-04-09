@@ -42,7 +42,7 @@ def check_sections(text):
     return sections
 
 def grammar_score(text):
-    tool = language_tool_python.LanguageTool("en-US")
+    tool = language_tool_python.LanguageToolPublic("en-US")
     matches = tool.check(text)
     total_errors = len(matches)
     score = max(0, 100 - total_errors * 2)
