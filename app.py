@@ -10,19 +10,30 @@ os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    
     result = None
-    if request.method == "POST":
-        resume = request.files["resume"]
-        jd_text = request.form.get("job_description")
-        jd_file = request.files.get("jd_file")
+    try:
+        if request.method == "POST":
+            resume = request.files.get("resume")
+            jd_text = request.form.get("job_description")
+            jd_file = request.files.get("jd_file")
 
-        jd_content = jd_text if jd_text.strip() else jd_file.read().decode("utf-8")
+            if not resume:
+                raise Exception("Resume file is missing.")
 
-        if resume and jd_content:
+            if not jd_text.strip() and not jd_file:
+                raise Exception("No job description provided.")
+
+            jd_content = jd_text.strip() if jd_text.strip() else jd_file.read().decode("utf-8")
+
             filename = secure_filename(resume.filename)
             filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
             resume.save(filepath)
+
             result = analyze_resume(filepath, jd_content)
+
+    except Exception as e:
+        print("🔥 Internal Server Error:", e)
 
     return render_template("index.html", result=result)
 
