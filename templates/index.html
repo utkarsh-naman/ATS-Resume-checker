@@ -81,6 +81,13 @@
                     <li>{{ section }}: {{ '✅' if present else '❌' }}</li>
                 {% endfor %}
             </ul>
+            <p><strong>Word Count:</strong> {{ result['word_count'] }}</p>
+            {% if result['word_count_warning'] %}
+                <div class="alert alert-warning">
+                    ⚠️ Your resume is shorter than 240 words. Consider adding more content for better ATS visibility.
+            </div>
+        {% endif %}
+
         </div>
         {% endif %}
     </div>
