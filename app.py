@@ -35,6 +35,8 @@ def index():
     except Exception as e:
         print("🔥 Internal Server Error:", e)
 
+    
+    print("🎯 Analysis Result:", result)
     return render_template("index.html", result=result)
 
 if __name__ == "__main__":
