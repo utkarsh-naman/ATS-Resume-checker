@@ -66,6 +66,13 @@
             <p><strong>Score:</strong> {{ result['score'] }} / 100</p>
             <p><strong>Matched Keywords:</strong> {{ result['matched_keywords'] }}</p>
             <p><strong>Missing Keywords:</strong> {{ result['missing_keywords'] }}</p>
+            <p><strong>Grammar Errors:</strong> {{ result['grammar_errors'] }}</p>
+            <p><strong>Sections Present:</strong></p>
+            <ul>
+                {% for section, present in result['sections_present'].items() %}
+                    <li>{{ section }}: {{ '✅' if present else '❌' }}</li>
+                {% endfor %}
+            </ul>
         </div>
         {% endif %}
     </div>

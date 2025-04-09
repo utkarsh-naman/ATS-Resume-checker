@@ -1,5 +1,5 @@
-
-flask
-werkzeug
+Flask
+python-docx
 PyMuPDF
 language-tool-python
+Werkzeug

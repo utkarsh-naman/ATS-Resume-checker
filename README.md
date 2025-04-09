@@ -12,9 +12,11 @@ A web application to analyze resumes based on job descriptions using Flask.
   - Formatting (font variety).
 - Displays a score out of 100.
 
-## Run Locally
+## Run locally using the following command in the project folder
 
 ```bash
 pip install -r requirements.txt
+```
+```
 python app.py
 ```
